@@ -12,7 +12,7 @@
 #
 # docker run --name rtl_433 -d -e MQTT_HOST=<mqtt-broker.example.com>   --privileged -v /dev/bus/usb:/dev/bus/usb  <image>
 
-FROM python:3.7
+FROM python:3.7-buster
 MAINTAINER Marco Verleun
 
 LABEL Description="This image is used to start a script that will monitor for events on 433,92 Mhz" Vendor="MarCoach" Version="1.0"
@@ -26,11 +26,14 @@ RUN pip install paho-mqtt
 RUN apt-get update && apt-get install -y \
 	rtl-sdr \
 	librtlsdr-dev \
-	librtlsdr0 \
 	git \
-	automake \
 	libtool \
-	cmake
+	cmake \
+	libusb-1.0-0-dev \
+	build-essential \
+	autoconf \
+	cmake \
+	pkg-config
 
 #
 # Pull RTL_433 source code from GIT, compile it and install it
