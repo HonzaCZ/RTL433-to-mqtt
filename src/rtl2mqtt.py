@@ -87,16 +87,8 @@ while True:
             sys.exit(rtl433_proc.poll())
 
         if "time" in line:
-            mqttc.publish(MQTT_TOPIC, payload=line, qos=MQTT_QOS, retain=True)
             json_dict = json.loads(line)
             for item in json_dict:
                 value = json_dict[item]
                 if "model" in item:
-                    subtopic = value
-                if "id" in item:
-                    subtopic += "/" + str(value)
-
-            for item in json_dict:
-                value = json_dict[item]
-                if not "model" in item:
-                    mqttc.publish(MQTT_TOPIC+"/"+subtopic+"/"+item, payload=value, qos=MQTT_QOS, retain=True)
+                    mqttc.publish(MQTT_TOPIC+"/"+value, payload=line, qos=MQTT_QOS, retain=True)
