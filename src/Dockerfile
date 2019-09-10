@@ -38,7 +38,7 @@ RUN apt-get update && apt-get install -y \
 #
 # Pull RTL_433 source code from GIT, compile it and install it
 #
-RUN git clone https://github.com/merbanan/rtl_433.git \
+RUN git clone --branch 19.08 https://github.com/merbanan/rtl_433.git \
 	&& cd rtl_433/ \
 	&& mkdir build \
 	&& cd build \
