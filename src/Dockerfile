@@ -47,10 +47,9 @@ RUN git clone --branch 19.08 https://github.com/merbanan/rtl_433.git \
 	&& make install
 
 #
-# Copy config, script and make it executable
+# Copy script and make it executable
 #
 COPY rtl2mqtt.py /scripts/rtl2mqtt.py
-COPY config.py /scripts/config.py
 RUN chmod +x /scripts/rtl2mqtt.py
 
 #
