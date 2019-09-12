@@ -91,4 +91,4 @@ while True:
             for item in json_dict:
                 value = json_dict[item]
                 if "model" in item:
-                    mqttc.publish(MQTT_TOPIC+"/"+value, payload=line, qos=MQTT_QOS, retain=True)
+                    mqttc.publish(MQTT_TOPIC+"/"+value, payload=line, qos=MQTT_QOS)
